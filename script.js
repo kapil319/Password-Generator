@@ -141,8 +141,8 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  let randomIndex = Math.floor(Math.random() * Array.length)
-  let randomElement = array[randomIndex];
+  let randomIndex = Math.floor(Math.random() * arr.length)
+  let randomElement = arr[randomIndex];
   
   return randomElement;
   
@@ -182,14 +182,14 @@ function generatePassword() {
 
   }
 
-  for(let index = 0; index < options.length; index++) 
-  randomCharacter = getRandom(randomCharacter);
+  for(let index = 0; index < options.length; index++){ 
+  var passwordGenerated = getRandom(randomCharacter);
+  result.push(passwordGenerated); 
+ 
+}
+  return result.join("")
 
-  result.push(randomCharacter); 
-} 
-
-
-
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
