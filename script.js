@@ -29,7 +29,7 @@ var specialCharacters = [
 var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 // Array of lowercase characters to be included in password
-var lowerCasedCharacters = [
+var lowercaseCharacters = [
   'a',
   'b',
   'c',
@@ -59,7 +59,7 @@ var lowerCasedCharacters = [
 ];
 
 // Array of uppercase characters to be included in password
-var upperCasedCharacters = [
+var uppercaseCharacters = [
   'A',
   'B',
   'C',
@@ -90,6 +90,7 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  
   //variable for password length //
   let length = parseInt (
       prompt("Enter Password length between 10 characters and 64")
@@ -125,24 +126,20 @@ function getPasswordOptions() {
     return;
   }
 
+//variable for password options //
+  let passwordOptions = {
+    length: length,
+    lowercaseCharacters: lowercaseCharacters,
+    uppercaseCharacters: uppercaseCharacters,
+    numericCharacters: numericCharacters,
+    specialCharacters: specialCharacters,
+  }
 
-
-
-
- 
-
-
-
-  
-
-  // if - character type lowercase - click ok to confirm
-  // if - character type uppercase - click ok to confirm
-  // if - character type numeric  - click ok to confirm
-  // if - character special numericCharacter - click ok to confirm
+  return passwordOptions;
 
 }
 
-// Function for ge tting a random element from an array
+// Function for getting a random element from an array
 function getRandom(arr) {
   let randomIndex = Math.floor(Math.random() * Array.length)
   let randomElement = array[randomIndex];
@@ -155,8 +152,44 @@ function getRandom(arr) {
 function generatePassword() {
   let options = getPasswordOptions();
 
+  let result = []
 
-}
+  let randomCharacter = []
+
+  let requiredCharacter = []
+
+  if(options.lowercaseCharacters) {
+    randomCharacter = randomCharacter.concat(lowercaseCharacters);
+    requiredCharacter.push(getRandom(lowercaseCharacters))
+
+  }
+
+  if(options.uppercaseCharacters) {
+    randomCharacter = randomCharacter.concat(uppercaseCharacters);
+    requiredCharacter.push(getRandom(uppercaseCharacters))
+
+  }
+
+  if(options.numericCharacters) {
+    randomCharacter = randomCharacter.concat(numericCharacters);
+    requiredCharacter.push(getRandom(numericCharacters))
+
+  }
+
+  if(options.specialCharacters) {
+    randomCharacter = randomCharacter.concat(specialCharacters);
+    requiredCharacter.push(getRandom(specialCharacters))
+
+  }
+
+  for(let index = 0; index < options.length; index++) 
+  randomCharacter = getRandom(randomCharacter);
+
+  result.push(randomCharacter); 
+} 
+
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
