@@ -111,18 +111,25 @@ function getPasswordOptions() {
   }
 
   if(length >= 10 <=64) {
-    let lowercaseCharacter = confirm("Password to include Lowercase characters? Click OK to confirm.") 
-
     alert(`Click OK to proceed`)
-    confirm("Password to include Lowercase characters? Click OK to confirm.")
-    confirm("Password to include Uppercase characters? Click OK to confirm.")
-    confirm("Password to include Numeric characters? Click OK to confirm.")
-    confirm("Password to include Special characters? e.g. $@%&*!. Click OK to confirm.");
-      if(lowercaseCharacter === false && )
-    
-  } 
-    else( )
+  }
+//variable for password characters//
+  let lowercaseCharacters = confirm("Password to include Lowercase characters? Click OK to confirm.") 
+  let uppercaseCharacters = confirm("Password to include Uppercase characters? Click OK to confirm.")
+  let numericCharacters =  confirm("Password to include Numeric characters? Click OK to confirm.")
+  let specialCharacters = confirm("Password to include Special characters? e.g. $@%&*!. Click OK to confirm.");
 
+      
+  if(lowercaseCharacters === false && uppercaseCharacters ===false && numericCharacters ===false && specialCharacters === false) {
+    alert(`Select atleast one character type`);
+    return;
+  }
+
+
+
+
+
+ 
 
 
 
